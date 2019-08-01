@@ -4,7 +4,6 @@
  */
 package com.frankdaza.bowling.utilities;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.log4j.Logger;
 
@@ -12,7 +11,7 @@ import org.apache.log4j.Logger;
  * @author Frank Edward Daza González
  * @date 2019-08-01
  */
-public class StrintUtils {
+public class StringUtils {
 	
 	public static final Logger log = Logger.getLogger(StringUtils.class);
 	
