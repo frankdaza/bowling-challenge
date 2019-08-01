@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
+import com.frankdaza.bowling.utilities.Constant;
+
 /**
  * @author Frank Edward Daza González
  * @date 2019-08-01
@@ -28,7 +30,7 @@ public class FileTest {
 	 */
 	@Test
 	public void readFileTest() {
-		try (Stream<String> stream = Files.lines(Paths.get("src/test/resources/fileTest.txt"))) {
+		try (Stream<String> stream = Files.lines(Paths.get(Constant.FILE_TEST_GAME_PATH))) {
 
 			stream.forEach(System.out::println);
 			stream.close();

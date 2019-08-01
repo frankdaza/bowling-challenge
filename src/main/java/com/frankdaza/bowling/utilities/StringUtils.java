@@ -40,7 +40,7 @@ public class StringUtils {
 					if (point >= 0 && point <= 10)
 						return true;
 				} catch(Exception e) {
-					log.error(e.getMessage());
+					log.error(e.getMessage(), e);
 					return false;
 				}
 				
