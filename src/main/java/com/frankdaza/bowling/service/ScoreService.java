@@ -94,7 +94,23 @@ public class ScoreService {
 			players.add(player);
 		}
 		
-		calculatePlayersScores(players);
+		List<Player> newPlayersScores = calculatePlayersScores(players);
+		
+//		for (Player player : newPlayersScores) {
+//			Score score = player.getScore();
+//			
+//			System.out.println(player.getName());
+//			System.out.println("Frame 1: " + score.getFrame1().getTotal());
+//			System.out.println("Frame 2: " + score.getFrame2().getTotal());
+//			System.out.println("Frame 3: " + score.getFrame3().getTotal());
+//			System.out.println("Frame 4: " + score.getFrame4().getTotal());
+//			System.out.println("Frame 5: " + score.getFrame5().getTotal());
+//			System.out.println("Frame 6: " + score.getFrame6().getTotal());
+//			System.out.println("Frame 7: " + score.getFrame7().getTotal());
+//			System.out.println("Frame 8: " + score.getFrame8().getTotal());
+//			System.out.println("Frame 9: " + score.getFrame9().getTotal());
+//			System.out.println("Frame 10: " + score.getFrame10().getTotal());
+//		}
 		
 		// TODO: Create function that validates player's scores.
 		
@@ -224,62 +240,18 @@ public class ScoreService {
 			
 			List<Integer> totalPoints = calculatesTotalFrame(frames);
 			
-			for (int i = 0; i < 10; i++) {
-				switch (i) {
-				case 0:
-					Frame frame1 = score.getFrame1();
-					frame1.setTotal(totalPoints.get(i));
-					break;
-					
-				case 1:
-					Frame frame2 = score.getFrame2();
-					frame2.setTotal(totalPoints.get(i));
-					break;
-					
-				case 2:
-					Frame frame3 = score.getFrame4();
-					frame3.setTotal(totalPoints.get(i));
-					break;
-					
-				case 3:
-					Frame frame4 = score.getFrame4();
-					frame4.setTotal(totalPoints.get(i));
-					break;
-					
-				case 4:
-					Frame frame5 = score.getFrame5();
-					frame5.setTotal(totalPoints.get(i));
-					break;
-					
-				case 5:
-					Frame frame6 = score.getFrame6();
-					frame6.setTotal(totalPoints.get(i));
-					break;
-					
-				case 6:
-					Frame frame7 = score.getFrame7();
-					frame7.setTotal(totalPoints.get(i));
-					break;
-					
-				case 7:
-					Frame frame8 = score.getFrame8();
-					frame8.setTotal(totalPoints.get(i));
-					break;
-					
-				case 8:
-					Frame frame9 = score.getFrame9();
-					frame9.setTotal(totalPoints.get(i));
-					break;
-					
-				case 9:
-					Frame frame10 = score.getFrame10();
-					frame10.setTotal(totalPoints.get(i));
-					break;
-
-				default:
-					break;
-				}
-			}
+			score.getFrame1().setTotal(totalPoints.get(0));
+			score.getFrame2().setTotal(totalPoints.get(1));
+			score.getFrame3().setTotal(totalPoints.get(2));
+			score.getFrame4().setTotal(totalPoints.get(3));
+			score.getFrame5().setTotal(totalPoints.get(4));
+			score.getFrame6().setTotal(totalPoints.get(5));
+			score.getFrame7().setTotal(totalPoints.get(6));
+			score.getFrame8().setTotal(totalPoints.get(7));
+			score.getFrame9().setTotal(totalPoints.get(8));
+			score.getFrame10().setTotal(totalPoints.get(9));
+			
+			newPlayers.add(player);
 		}
 		
 		return newPlayers;
@@ -469,7 +441,7 @@ public class ScoreService {
 			lastFrameTotal += tmpTotalPointsFrame;
 		}
 			
-		log.info(totalPoints);
+		log.debug(totalPoints);
 		
 		return totalPoints;
 	}
