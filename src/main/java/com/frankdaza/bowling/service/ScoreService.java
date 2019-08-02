@@ -5,6 +5,7 @@
 package com.frankdaza.bowling.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -56,7 +57,7 @@ public class ScoreService {
 			
 		}
 		
-		log.info(playersLinkedHashMap);
+		log.debug(playersLinkedHashMap);
 		
 		createScoreForPlayer();
 	}
@@ -93,7 +94,10 @@ public class ScoreService {
 			players.add(player);
 		}
 		
-		System.out.println(players);
+		calculatePlayersScores(players);
+		
+		// TODO: Create function that validates player's scores.
+		
 	}
 	
 	
@@ -187,7 +191,7 @@ public class ScoreService {
 			
 		}
 		
-		log.info(frameLinkedHashMap);
+		log.debug(frameLinkedHashMap);
 		
 		Score score = new Score(
 				frame1, frame2, frame3, frame4, frame5, 
@@ -197,5 +201,278 @@ public class ScoreService {
 		
 		return player;
 	}
+	
+	/**
+	 * Calculates players scores.
+	 * 
+	 * @author Frank Edward Daza González
+	 * @date 2019-08-02
+	 * @param players
+	 * @return List<Player>
+	 */
+	private List<Player> calculatePlayersScores(List<Player> players) {
+		List<Player> newPlayers = new ArrayList<>();
+		
+		for (Player player : players) {
+			Score score = player.getScore();
+			
+			List<Frame> frames = Arrays.asList(
+					score.getFrame1(), score.getFrame2(), score.getFrame3(), 
+					score.getFrame4(), score.getFrame5(), score.getFrame6(), 
+					score.getFrame7(), score.getFrame8(), score.getFrame9(), 
+					score.getFrame10());
+			
+			List<Integer> totalPoints = calculatesTotalFrame(frames);
+			
+			for (int i = 0; i < 10; i++) {
+				switch (i) {
+				case 0:
+					Frame frame1 = score.getFrame1();
+					frame1.setTotal(totalPoints.get(i));
+					break;
+					
+				case 1:
+					Frame frame2 = score.getFrame2();
+					frame2.setTotal(totalPoints.get(i));
+					break;
+					
+				case 2:
+					Frame frame3 = score.getFrame4();
+					frame3.setTotal(totalPoints.get(i));
+					break;
+					
+				case 3:
+					Frame frame4 = score.getFrame4();
+					frame4.setTotal(totalPoints.get(i));
+					break;
+					
+				case 4:
+					Frame frame5 = score.getFrame5();
+					frame5.setTotal(totalPoints.get(i));
+					break;
+					
+				case 5:
+					Frame frame6 = score.getFrame6();
+					frame6.setTotal(totalPoints.get(i));
+					break;
+					
+				case 6:
+					Frame frame7 = score.getFrame7();
+					frame7.setTotal(totalPoints.get(i));
+					break;
+					
+				case 7:
+					Frame frame8 = score.getFrame8();
+					frame8.setTotal(totalPoints.get(i));
+					break;
+					
+				case 8:
+					Frame frame9 = score.getFrame9();
+					frame9.setTotal(totalPoints.get(i));
+					break;
+					
+				case 9:
+					Frame frame10 = score.getFrame10();
+					frame10.setTotal(totalPoints.get(i));
+					break;
 
+				default:
+					break;
+				}
+			}
+		}
+		
+		return newPlayers;
+	}
+	
+	/**
+	 * Calculates total points of each frame from a player.
+	 * 
+	 * @author Frank Edward Daza González
+	 * @date 2019-08-02
+	 * @param frames
+	 * @return List<Integer> 
+	 */
+	private List<Integer> calculatesTotalFrame(List<Frame> frames) {
+		List<Integer> totalPoints = new ArrayList<>();		
+		List<Frame> newListOfFrames = new ArrayList<>(frames);
+		int lastFrameTotal = 0;
+		
+		for (int i = 0; i < 10; i++) {
+			Integer totalPointsFrame = 0;
+			
+			for (Frame frame : newListOfFrames) {
+				if (i < 8) {
+					
+					// STRIKE
+					
+					if (frame.getPoint1().equals(10)) {
+						totalPointsFrame += 10;
+						
+						if (newListOfFrames.get(1).getPoint1() != null) {
+							Integer point = newListOfFrames.get(1).getPoint1().equals(-2)
+									? 0 : newListOfFrames.get(1).getPoint1();
+							
+							totalPointsFrame += point;
+							
+							if (newListOfFrames.get(1).getPoint2() != null) {
+								Integer point2 = newListOfFrames.get(1).getPoint2().equals(-2)
+										? 0 : newListOfFrames.get(1).getPoint2();
+								
+								totalPointsFrame += point2;
+								break;
+							} else {
+								Integer point2 = newListOfFrames.get(2).getPoint1().equals(-2)
+										? 0 : newListOfFrames.get(2).getPoint1();
+								
+								totalPointsFrame += point2;
+								break;
+							}
+						}
+						
+					}
+					
+					if (frame.getPoint1() != null && frame.getPoint2() != null) {
+						Integer point1 = frame.getPoint1().equals(-2)
+								? 0 : frame.getPoint1();
+						
+						Integer point2 = frame.getPoint2().equals(-2)
+								? 0 : frame.getPoint2();
+						
+						Integer total = point1 + point2;
+						
+						// SPARE
+						
+						if (total.equals(10)) {
+							totalPointsFrame += 10;
+							
+							Integer pointSpare = newListOfFrames.get(1).getPoint1().equals(-2)
+									? 0 : newListOfFrames.get(1).getPoint1();
+							
+							totalPointsFrame += pointSpare;
+							break;
+						} else {
+							totalPointsFrame += total;
+							break;
+						}
+					}
+					
+				} else {
+					if (i == 8) {
+						
+						// STRIKE
+						
+						if (frame.getPoint1().equals(10)) {
+							totalPointsFrame += 10;
+							
+							if (newListOfFrames.get(1).getPoint1() != null) {
+								Integer point = newListOfFrames.get(1).getPoint1().equals(-2)
+										? 0 : newListOfFrames.get(1).getPoint1();
+								
+								totalPointsFrame += point;
+								
+								if (newListOfFrames.get(1).getPoint2() != null) {
+									Integer point2 = newListOfFrames.get(1).getPoint2().equals(-2)
+											? 0 : newListOfFrames.get(1).getPoint2();
+									
+									totalPointsFrame += point2;
+									break;
+								} 
+							}
+							
+						}
+						
+						if (frame.getPoint1() != null && frame.getPoint2() != null) {
+							Integer point1 = frame.getPoint1().equals(-2)
+									? 0 : frame.getPoint1();
+							
+							Integer point2 = frame.getPoint2().equals(-2)
+									? 0 : frame.getPoint2();
+							
+							Integer total = point1 + point2;
+							
+							// SPARE
+							
+							if (total.equals(10)) {
+								totalPointsFrame += 10;
+								
+								Integer pointSpare = newListOfFrames.get(1).getPoint1().equals(-2)
+										? 0 : newListOfFrames.get(1).getPoint1();
+								
+								totalPointsFrame += pointSpare;
+								break;
+							} else {
+								totalPointsFrame += total;
+								break;
+							}
+						}
+						
+					}
+					
+					if (i == 9) {
+						
+						// STRIKE
+						
+						if (frame.getPoint1().equals(10)) {
+							totalPointsFrame += 10;
+							
+							if (frame.getPoint2() != null) {
+								Integer point = frame.getPoint2().equals(-2)
+										? 0 : frame.getPoint2();
+								
+								totalPointsFrame += point;
+								
+								if (frame.getPoint3() != null) {
+									Integer point3 = frame.getPoint3().equals(-2)
+											? 0 : frame.getPoint3();
+									
+									totalPointsFrame += point3;
+									break;
+								} 
+							}
+						}
+						
+						if (frame.getPoint1() != null && frame.getPoint2() != null) {
+							Integer point1 = frame.getPoint1().equals(-2)
+									? 0 : frame.getPoint1();
+							
+							Integer point2 = frame.getPoint2().equals(-2)
+									? 0 : frame.getPoint2();
+							
+							Integer total = point1 + point2;
+							
+							// SPARE
+							
+							if (total.equals(10)) {
+								totalPointsFrame += 10;
+								
+								Integer pointSpare = frame.getPoint3().equals(-2)
+										? 0 : frame.getPoint3();
+								
+								totalPointsFrame += pointSpare;
+								break;
+							} else {
+								totalPointsFrame += total;
+								break;
+							}
+						}
+						
+					}
+					
+				}									
+			}
+			
+			int tmpTotalPointsFrame = totalPointsFrame;
+			totalPointsFrame += lastFrameTotal;
+			totalPoints.add(totalPointsFrame);
+			newListOfFrames.remove(0);
+			lastFrameTotal += tmpTotalPointsFrame;
+		}
+			
+		log.info(totalPoints);
+		
+		return totalPoints;
+	}
+
+	
 }

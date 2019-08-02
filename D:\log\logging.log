@@ -13,3 +13,22 @@
 
 
 
+2019-08-02 11:51:56 INFO  ScoreService:57 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 13:53:36 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 13:59:15 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:05:18 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -1, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:05:31 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -1, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:07:03 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:08:32 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:10:21 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:13:04 INFO  ScoreService:58 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:16:40 INFO  ScoreService:59 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:18:24 INFO  ScoreService:59 - {Jeff=[10, 7, 3, 9, 0, 10, 0, 8, 8, 2, -2, 6, 10, 10, 10, 8, 1], John=[3, 7, 6, 3, 10, 8, 1, 10, 10, 9, 0, 7, 3, 4, 4, 10, 9, 0]}
+2019-08-02 14:18:24 INFO  ScoreService:190 - {1=com.frankdaza.bowling.domain.Frame@4459eb14, 2=com.frankdaza.bowling.domain.Frame@5a2e4553, 3=com.frankdaza.bowling.domain.Frame@28c97a5, 4=com.frankdaza.bowling.domain.Frame@6659c656, 5=com.frankdaza.bowling.domain.Frame@6d5380c2, 6=com.frankdaza.bowling.domain.Frame@45ff54e6, 7=com.frankdaza.bowling.domain.Frame@2328c243, 8=com.frankdaza.bowling.domain.Frame@bebdb06, 9=com.frankdaza.bowling.domain.Frame@7a4f0f29, 10=com.frankdaza.bowling.domain.Frame@45283ce2}
+2019-08-02 14:18:24 INFO  ScoreService:190 - {1=com.frankdaza.bowling.domain.Frame@77a567e1, 2=com.frankdaza.bowling.domain.Frame@736e9adb, 3=com.frankdaza.bowling.domain.Frame@6d21714c, 4=com.frankdaza.bowling.domain.Frame@108c4c35, 5=com.frankdaza.bowling.domain.Frame@4ccabbaa, 6=com.frankdaza.bowling.domain.Frame@4bf558aa, 7=com.frankdaza.bowling.domain.Frame@2d38eb89, 8=com.frankdaza.bowling.domain.Frame@5fa7e7ff, 9=com.frankdaza.bowling.domain.Frame@4629104a, 10=com.frankdaza.bowling.domain.Frame@27f8302d}
+2019-08-02 16:38:51 INFO  ScoreService:472 - [20, 37, 46, 66, 74, 92, 98, 118, 138, 158]
+2019-08-02 16:38:51 INFO  ScoreService:472 - [13, 22, 41, 50, 69, 88, 97, 114, 122, 141]
+2019-08-02 16:43:27 INFO  ScoreService:472 - [20, 37, 46, 66, 74, 91, 97, 117, 137, 157]
+2019-08-02 16:43:27 INFO  ScoreService:472 - [16, 25, 44, 53, 72, 91, 100, 116, 124, 143]
+2019-08-02 17:00:22 INFO  ScoreService:472 - [20, 39, 48, 66, 74, 84, 90, 120, 148, 167]
+2019-08-02 17:00:22 INFO  ScoreService:472 - [16, 25, 44, 53, 82, 101, 110, 124, 132, 151]

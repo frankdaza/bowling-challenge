@@ -51,7 +51,7 @@ public class GameServiceImpl implements GameService {
 					.collect(Collectors.toList());
 			
 			for (String line : fileLines) {
-				System.out.println(line);
+				log.debug(line);
 				
 				if (!StringUtils.isFileLineValid(line)) {
 					badFileFormat();
