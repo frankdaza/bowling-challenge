@@ -10,7 +10,8 @@ import java.util.List;
  * @author Frank Edward Daza González
  * @date 2019-08-02
  */
-public class Score {
+public class ScoreService {
+	
 	
 	/**
 	 * Convert File lines to players scores.

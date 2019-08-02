@@ -4,7 +4,7 @@
  */
 package com.frankdaza.bowling.main;
 
-import com.frankdaza.bowling.service.GameImpl;
+import com.frankdaza.bowling.service.GameServiceImpl;
 
 /**
  * @author Frank Edward Daza González
@@ -20,7 +20,7 @@ public class Bowling {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameImpl gameImpl = new GameImpl();
+		GameServiceImpl gameImpl = new GameServiceImpl();
 		gameImpl.startGame();
 	}
 

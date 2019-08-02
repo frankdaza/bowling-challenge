@@ -20,11 +20,11 @@ import com.frankdaza.bowling.utilities.StringUtils;
  * @author Frank Edward Daza González
  * @date 2019-08-01
  */
-public class GameImpl implements Game {
+public class GameServiceImpl implements GameService {
 	
-	private static final Logger log = Logger.getLogger(GameImpl.class);
+	private static final Logger log = Logger.getLogger(GameServiceImpl.class);
 	private List<String> fileLines;
-	private Score score = new Score();
+	private ScoreService score = new ScoreService();
 	
 	/**
 	 * Prints a message on console.
@@ -41,7 +41,7 @@ public class GameImpl implements Game {
 	
 
 	/**
-	 * @see com.frankdaza.bowling.service.Game#loadFile()
+	 * @see com.frankdaza.bowling.service.GameService#loadFile()
 	 */
 	@Override
 	public void loadFile() {
@@ -66,7 +66,7 @@ public class GameImpl implements Game {
 	}
 	
 	/**
-	 * @see com.frankdaza.bowling.service.Game#startGame()
+	 * @see com.frankdaza.bowling.service.GameService#startGame()
 	 */
 	public void startGame() {
 		consoleMessage("BOWLING GAME STARTED");
@@ -76,7 +76,7 @@ public class GameImpl implements Game {
 	}
 
 	/**
-	 * @see com.frankdaza.bowling.service.Game#endGame()
+	 * @see com.frankdaza.bowling.service.GameService#endGame()
 	 */
 	@Override
 	public void endGame() {
@@ -85,7 +85,7 @@ public class GameImpl implements Game {
 
 
 	/**
-	 * @see com.frankdaza.bowling.service.Game#badFileFormat()
+	 * @see com.frankdaza.bowling.service.GameService#badFileFormat()
 	 */
 	@Override
 	public void badFileFormat() {

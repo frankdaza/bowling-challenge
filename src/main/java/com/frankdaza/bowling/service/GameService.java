@@ -8,7 +8,7 @@ package com.frankdaza.bowling.service;
  * @author Frank Edward Daza González
  * @date 2019-08-01
  */
-public interface Game {
+public interface GameService {
 	
 	/**
 	 * Start the game.
