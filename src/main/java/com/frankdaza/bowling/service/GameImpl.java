@@ -23,6 +23,8 @@ import com.frankdaza.bowling.utilities.StringUtils;
 public class GameImpl implements Game {
 	
 	private static final Logger log = Logger.getLogger(GameImpl.class);
+	private List<String> fileLines;
+	private Score score = new Score();
 	
 	/**
 	 * Prints a message on console.
@@ -45,7 +47,7 @@ public class GameImpl implements Game {
 	public void loadFile() {
 		try (Stream<String> stream = Files.lines(Paths.get(Constant.FILE_GAME_PATH))) {
 
-			List<String> fileLines = stream
+			this.fileLines = stream
 					.collect(Collectors.toList());
 			
 			for (String line : fileLines) {
@@ -69,6 +71,7 @@ public class GameImpl implements Game {
 	public void startGame() {
 		consoleMessage("BOWLING GAME STARTED");
 		loadFile();
+		this.score.convertFileLinesToScores(this.fileLines);
 		endGame();
 	}
 
