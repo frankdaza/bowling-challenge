@@ -96,21 +96,21 @@ public class ScoreService {
 		
 		List<Player> newPlayersScores = calculatePlayersScores(players);
 		
-//		for (Player player : newPlayersScores) {
-//			Score score = player.getScore();
-//			
-//			System.out.println(player.getName());
-//			System.out.println("Frame 1: " + score.getFrame1().getTotal());
-//			System.out.println("Frame 2: " + score.getFrame2().getTotal());
-//			System.out.println("Frame 3: " + score.getFrame3().getTotal());
-//			System.out.println("Frame 4: " + score.getFrame4().getTotal());
-//			System.out.println("Frame 5: " + score.getFrame5().getTotal());
-//			System.out.println("Frame 6: " + score.getFrame6().getTotal());
-//			System.out.println("Frame 7: " + score.getFrame7().getTotal());
-//			System.out.println("Frame 8: " + score.getFrame8().getTotal());
-//			System.out.println("Frame 9: " + score.getFrame9().getTotal());
-//			System.out.println("Frame 10: " + score.getFrame10().getTotal());
-//		}
+		for (Player player : newPlayersScores) {
+			Score score = player.getScore();
+			
+			System.out.println(player.getName());
+			System.out.println("Frame 1: " + score.getFrame1().getTotal());
+			System.out.println("Frame 2: " + score.getFrame2().getTotal());
+			System.out.println("Frame 3: " + score.getFrame3().getTotal());
+			System.out.println("Frame 4: " + score.getFrame4().getTotal());
+			System.out.println("Frame 5: " + score.getFrame5().getTotal());
+			System.out.println("Frame 6: " + score.getFrame6().getTotal());
+			System.out.println("Frame 7: " + score.getFrame7().getTotal());
+			System.out.println("Frame 8: " + score.getFrame8().getTotal());
+			System.out.println("Frame 9: " + score.getFrame9().getTotal());
+			System.out.println("Frame 10: " + score.getFrame10().getTotal());
+		}
 		
 		// TODO: Create function that validates player's scores.
 		

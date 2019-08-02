@@ -11,6 +11,9 @@ package com.frankdaza.bowling.utilities;
 public class Constant {
 	
 	public static final String FILE_GAME_PATH = "src/main/resources/file.txt";
+//	public static final String FILE_GAME_PATH = "src/main/resources/fileOnlyStrikes.txt";
+//	public static final String FILE_GAME_PATH = "src/main/resources/fileOnly0.txt";
+//	public static final String FILE_GAME_PATH = "src/main/resources/fileOnlyFoul.txt";
 	public static final String FILE_TEST_GAME_PATH = "src/test/resources/fileTest.txt";
 	
 }
