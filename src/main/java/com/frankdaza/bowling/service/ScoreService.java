@@ -25,8 +25,6 @@ public class ScoreService {
 	
 	private static final Logger log = Logger.getLogger(ScoreService.class);
 	private BoardService boardService = new BoardService();
-	
-	
 	private LinkedHashMap<String, List<Integer>> playersLinkedHashMap = new LinkedHashMap<>();
 	
 	
@@ -95,29 +93,38 @@ public class ScoreService {
 			players.add(player);
 		}
 		
-		List<Player> newPlayersScores = calculatePlayersScores(players);
-		
-		/*
-		 * for (Player player : newPlayersScores) { Score score = player.getScore();
-		 * 
-		 * System.out.println(player.getName()); System.out.println("Frame 1: " +
-		 * score.getFrame1().getTotal()); System.out.println("Frame 2: " +
-		 * score.getFrame2().getTotal()); System.out.println("Frame 3: " +
-		 * score.getFrame3().getTotal()); System.out.println("Frame 4: " +
-		 * score.getFrame4().getTotal()); System.out.println("Frame 5: " +
-		 * score.getFrame5().getTotal()); System.out.println("Frame 6: " +
-		 * score.getFrame6().getTotal()); System.out.println("Frame 7: " +
-		 * score.getFrame7().getTotal()); System.out.println("Frame 8: " +
-		 * score.getFrame8().getTotal()); System.out.println("Frame 9: " +
-		 * score.getFrame9().getTotal()); System.out.println("Frame 10: " +
-		 * score.getFrame10().getTotal()); }
-		 */
+		List<Player> newPlayersScores = calculatePlayersScores(players);	
 		
 		
-		this.boardService.printGameBoard(newPlayersScores);
+		Boolean isScoreValid = validatesPlayersScore(newPlayersScores);
 		
-		// TODO: Create function that validates player's scores.
+		if (isScoreValid) {
+			this.boardService.printGameBoard(newPlayersScores);			
+		} else {
+			System.out.println("Invalid score!");
+		}
+	}
+	
+	
+	/**
+	 * Validates if a players has a total score valid.
+	 * A valid total score number is between 0 and 300.
+	 * 
+	 * @author Frank Edward Daza González
+	 * @date 2019-08-03
+	 * @param playersScores
+	 * @return Boolean Return true if the total score is valid, otherwise return false.
+	 */
+	private Boolean validatesPlayersScore(List<Player> playersScores) {
+		for (Player player : playersScores) {
+			Score score = player.getScore();
+			
+			if (score.getFrame10().getTotal() > 300 || score.getFrame10().getTotal() < 0) {
+				return false;
+			}
+		}
 		
+		return true;
 	}
 	
 	
