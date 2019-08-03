@@ -4,6 +4,7 @@
  */
 package com.frankdaza.bowling.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.frankdaza.bowling.domain.Frame;
@@ -40,13 +41,13 @@ public class BoardService {
 	private void printPlayerScore(Player player) {
 		Score score = player.getScore();
 		
-		System.out.printf("Frame    %d     %d     %d     %d     %d     %d     %d     %d     %d        %d \n",
+		System.out.printf("Frame    %d     %d     %d     %d     %d     %d     %d     %d     %d     %d\n",
 				1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 		System.out.println(player.getName());
 		
 		printFallsPlayer(score);
 		
-		System.out.printf("Score    %s   %s   %s   %s   %s   %s   %s   %s   %s      %s \n\n",
+		System.out.printf("Score    %s   %s   %s   %s   %s   %s   %s   %s   %s   %s\n\n",
 				getCorrectSpacesForNumber(score.getFrame1().getTotal()),
 				getCorrectSpacesForNumber(score.getFrame2().getTotal()),
 				getCorrectSpacesForNumber(score.getFrame3().getTotal()),
@@ -100,17 +101,17 @@ public class BoardService {
 		String frame9 = getValueOrSymbolOfPinFalls(score.getFrame9());
 		String frame10 = getValueOrSymbolOfPinFalls(score.getFrame10());
 		
-		System.out.printf("PinFalls %s     %s     %s     %s     %s     %s     %s     %s     %s        %s \n",
-				frame1, 
-				frame2, 
-				frame3, 
-				frame4, 
-				frame5, 
-				frame6, 
-				frame7, 
-				frame8, 
-				frame9, 
-				frame10);
+		System.out.printf("PinFalls %s %s %s %s %s %s %s %s %s %s\n",
+				getCorrectSpacesForString(frame1), 
+				getCorrectSpacesForString(frame2), 
+				getCorrectSpacesForString(frame3), 
+				getCorrectSpacesForString(frame4), 
+				getCorrectSpacesForString(frame5), 
+				getCorrectSpacesForString(frame6), 
+				getCorrectSpacesForString(frame7), 
+				getCorrectSpacesForString(frame8), 
+				getCorrectSpacesForString(frame9), 
+				getCorrectSpacesForString(frame10));
 	}
 	
 	
@@ -125,38 +126,38 @@ public class BoardService {
 	private String getValueOrSymbolOfPinFalls(Frame frame) {	
 		if (frame.getPoint3() == null) {
 			if (frame.getPoint2() == null) {						
-				return getCorrectSpacesForNumber(frame.getPoint1()).replace("10", "X ").replace("-2", "F");
+				return getCorrectSpacesForNumber(frame.getPoint1()).replace("10", "X").replace("-2", "F");
 			}
 			
 			Integer totalSpare = frame.getPoint1() + frame.getPoint2();
 			
 			// SPARE
 			if (totalSpare.equals(10)) {
-				return (getCorrectSpacesForNumber(frame.getPoint1()) + "/  ").replace("10", "X ").replace("-2", "F");
+				return (getCorrectSpacesForNumber(frame.getPoint1()) + "/").replace("10", "X").replace("-2", "F");
 			}
 			
 			return (getCorrectSpacesForNumber(frame.getPoint1()) + 
-					getCorrectSpacesForNumber(frame.getPoint2())).replace("10", "X ").replace("-2", "F");		
+					getCorrectSpacesForNumber(frame.getPoint2())).replace("10", "X").replace("-2", "F");		
 		} else {
 			if (frame.getPoint3() == null) {							
 				Integer totalSpare = frame.getPoint1() + frame.getPoint2();
 				
 				// SPARE
 				if (totalSpare.equals(10)) {
-					return (getCorrectSpacesForNumber(frame.getPoint1()) + "/  ").replace("10", "X ").replace("-2", "F");
+					return (getCorrectSpacesForNumber(frame.getPoint1()) + "/").replace("10", "X").replace("-2", "F");
 				}
 			} else {
 				Integer totalSpare = frame.getPoint2() + frame.getPoint3();
 				
 				// SPARE
 				if (totalSpare.equals(10)) {
-					return (getCorrectSpacesForNumber(frame.getPoint2()) + "/  ").replace("10", "X ").replace("-2", "F");
+					return (getCorrectSpacesForNumber(frame.getPoint2()) + "/").replace("10", "X").replace("-2", "F");
 				}
 			}
 			
 			return (getCorrectSpacesForNumber(frame.getPoint1()) + 
 					getCorrectSpacesForNumber(frame.getPoint2()) + 
-					getCorrectSpacesForNumber(frame.getPoint3())).replace("10", "X ").replace("-2", "F");
+					getCorrectSpacesForNumber(frame.getPoint3())).replace("10", "X").replace("-2", "F");
 		}
 	}
 	
@@ -172,21 +173,54 @@ public class BoardService {
 	 * @return String
 	 */
 	private String getCorrectSpacesForString(String string) {
-		String[] resultArray = string.trim().split(" ");
+		String firstResult = string.trim();
+		char[] charArray = firstResult.toCharArray();
+		List<String> resultArray = new ArrayList<>();
+		List<String> resultArrayWithSpaces = new ArrayList<>();
 		String result = "";
+		String pivot = "";
 		
-		for (int i = 0; i < resultArray.length; i++) {
-			int characters = resultArray[i].length();
+		for (int i = 0; i < charArray.length; i++) {
+			if (charArray[i] != ' ') {
+				pivot += charArray[i];
+				
+				if (i+1 == charArray.length)
+					resultArray.add(pivot);
+			} else {
+				if (!pivot.equals("")) {
+					resultArray.add(pivot);
+					pivot = "";
+				}
+			}
+		}
+		
+		for (String element : resultArray) {
+			String elementTrim = element.trim();
 			
-			if (characters < 10) {
-				result += resultArray[i] + "  ";
+			if (elementTrim.length() < 10) {
+				
+				result += elementTrim + "  ";
+				
+				if (elementTrim.equals("X")) {
+					result += "  ";	
+				}
+				
+				resultArrayWithSpaces.add(result);
+				continue;
 			}
 			
-			if (characters >= 10 && characters < 100) {
-				result += resultArray[i] + " ";
+			if (elementTrim.length() >= 10 && elementTrim.length() < 100) {
+				result += elementTrim + " ";
+				resultArrayWithSpaces.add(result);
+				continue;
 			}
 			
-			result += resultArray[i];
+			result += elementTrim;
+			resultArrayWithSpaces.add(result);
+		}
+		
+		if (resultArray.size() == 2) {
+			return result.substring(0, result.length() - 1);
 		}
 		
 		return result;
