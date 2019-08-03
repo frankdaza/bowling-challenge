@@ -12,4 +12,4 @@ openjdk version "1.8.0_222"
 OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_222-b10)
 OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.222-b10, mixed mode).
 
-For more information about how the software works, just watch the video called: Intro Execute Bowling Software, in the media folder.
+For more information about how the software works, just watch the video called: Intro Execute Bowling Software, in the src/main/resources folder.
